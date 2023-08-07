@@ -11,7 +11,18 @@ router.get('/', async (req, res) => {
     }
 })
 
+router.post('/', async (req, res) => {
+    try{
+        const data = await Location.create(req.body)
+        res.status(200).json({message: "Create success", createdData: data})
+    }catch(err){
+        return res.status(500).json({message: 'Internal Server Error', error: err})
+    }
+})
 
+router.get('/:id', async (req, res) => {
+    
+})
 
 
 module.exports = router
